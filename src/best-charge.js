@@ -3,7 +3,14 @@ function besstCharge(selectdItems) {
   let promotions = loadPromotions();
 
   let formatedItems = formateIds(selectdItems);
-
+  let itemsInfo = getItemsInfo(formatedItems, allItems);
+  let itemSubtotal = calculateSubtotal(itemsInfo);
+  let total = calculateTotal(itemSubtotal);
+  let halfIds = getHalfId(promotions)
+  let firstMethod = calculateFirstMethod(total)
+  let secondMethodItem = calculateSecondMethod(itemSubtotal, halfIds);
+  let secondMethod = calculateSecondTotal(secondMethodItem);
+  let bestType = judge(firstMethod, secondMethod, total)
 }
 
 function fomateIds(selectedItems) {
